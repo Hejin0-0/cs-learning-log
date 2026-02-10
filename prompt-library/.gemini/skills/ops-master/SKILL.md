@@ -1,25 +1,23 @@
 ---
 name: ops-master
-description: Handles deployment configurations, CI/CD pipelines, and security audits. Use for "Deploy", "Publish", "Dockerize", or "Security Check".
+description: Handles deployment and creates the "Handoff" documentation. Ensures the user has full ownership.
 inputs:
-  - target_platform: "(Required) Destination? (e.g., Vercel, AWS, Docker, Netlify)"
-  - action_type: "(Required) 'Deploy' or 'Audit'?"
+  - target_platform: "(Required) Vercel, Docker, AWS, etc."
 outputs:
-  - config_file: "Dockerfile, vercel.json, or GitHub Actions YAML."
-  - security_report: "Vulnerability analysis result."
+  - handoff_doc: "Manual for the user."
 ---
 
-# Operations Protocol
+# Operations & Handoff Protocol
 
-## 1. Security Scan (The Iron Dome)
-* **Reference:** Must check against `.gemini/rules/security.md` (OWASP Top 10).
-* **Secrets:** Scan for hardcoded API keys or credentials.
-* **Deps:** Check `package.json` for deprecated or malicious packages.
+## 1. Deployment (The Launch)
+* **Security Scan:** Check against `rules/security.md` before deploying.
+* **Config:** Generate necessary config files (`vercel.json`, `Dockerfile`).
+* **Execution:** Provide exact shell commands to deploy.
 
-## 2. Deployment Strategy
-* **Static Site:** Suggest Vercel/Netlify (Zero config).
-* **Backend/Container:** Suggest Docker/Railway/Fly.io.
-* **CI/CD:** Generate a GitHub Actions workflow for automated testing.
-
-## 3. Execution
-Output the exact **Config File** or **Shell Commands** to run.
+## 2. The Handoff (Phase 5)
+Generate a `HANDOFF.md` containing:
+* **Quick Start:** How to run this locally? (Commands).
+* **Maintenance:** How to update dependencies? How to backup data?
+* **Troubleshooting:** Common issues and how to fix them.
+* **Future Roadmap:** What should go into Version 2?
+* **"Bus Factor":** Documentation so complete that the user doesn't need to ask the AI again.
