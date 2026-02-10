@@ -1,31 +1,50 @@
-# Kaizen Log (Continuous Improvement)
+# LESSONS.md - The Instincts Database (v3.1.1 Hybrid)
 
-이 파일은 프로젝트의 **장기 기억(Long-term Memory)**입니다.
-**Andrej Karpathy의 통찰**에서 도출된 절대 원칙과, **Agent Lightning**이 실전에서 학습한 교훈을 기록합니다.
-세션 시작 시 이 내용을 로드하여 동일한 실수를 미연에 방지하십시오.
+## 0. System Memory Protocol
+This file is NOT a diary. It is a **Structured Database of Instincts**.
+Before every session, you **MUST** query this file to load your "Survival Instincts".
 
-## 🛑 Karpathy's Anti-Patterns (Never Do This)
-아래 항목들은 **Andrej Karpathy**가 지적한 LLM의 고질적인 실수들입니다. 절대 반복하지 마십시오.
-
-1.  **Think Before Coding [Assumption]:**
-    * 파일 형식, 필드, 범위를 묵시적으로 가정하고 진행하는 행위.
-    * 파일 경로나 데이터 구조를 추측하지 말고, 반드시 `ls`나 `cat`으로 확인 후 진행하십시오.
-2.  **Simplicity First [Mindset]:**
-    * 단순 계산에 디자인 패턴(Strategy, Factory)을 적용하거나, 요청하지 않은 기능을 "유용할 것 같아서" 추가하는 행위.
-3.  **Surgical Changes [Refactor]:**
-    * 버그 수정 중 관련 없는 코드의 스타일(들여쓰기, 따옴표, 주석)이나 타입 힌트를 건드리는 행위 (Diff 오염 방지).
-4.  **Goal-Driven [Execution]:**
-    * 구체적인 테스트나 검증 계획 없이 "코드 리뷰하고 개선하겠습니다"라고 모호하게 말하는 행위.
-
-## 💡 Key Insight
-**"Overcomplicated code isn't obviously wrong—it's just premature."**
-지금 당장 필요한 코드만 작성하십시오. 미래의 확장성은 나중에 걱정하십시오.
+**Structure:**
+* **Trigger:** The specific context or user input pattern.
+* **Instinct:** The immediate, reflex action you must take.
+* **Confidence:** 0.0 (Experimental) to 1.0 (Iron Law).
 
 ---
 
-## 📊 Lightning Optimization Log
-*(이곳은 `AGENT_OPTIMIZER`가 실패로부터 배운 교훈을 실시간으로 기록하는 공간입니다.)*
+## 1. Global Instincts (The Iron Laws)
 
-| Date   | Trigger (Failure) | Learned Policy (New Rule) |
-| :----- | :---------------- | :------------------------ |
-| (Auto) | (Auto)            | (Auto)                    |
+| Trigger (Situation)             | Instinct (Reflex Action)                                                    | Conf | Source      |
+| :------------------------------ | :-------------------------------------------------------------------------- | :--- | :---------- |
+| **User asks for "New Feature"** | **STOP.** Load `@00_PO` first. Do not code immediately.                     | 1.0  | Kernel v3.1 |
+| **Coding a "Data Model"**       | **HALT.** Check `@11_DBA` schema approval. No schema, no code.              | 1.0  | Kernel v3.1 |
+| **"Error", "Bug", "Fix"**       | **Check Tests.** Run `@10_QA` before & after fix. Never fix blindly.        | 0.9  | Kernel v3.0 |
+| **Creating new file**           | **Check `rules/`**. Load language-specific rules (e.g., `rules/python.md`). | 1.0  | Kernel v4.0 |
+
+---
+
+## 2. Pattern Recognition (Learned Behaviors)
+*Self-correcting behaviors learned from previous failures.*
+
+| Trigger (Situation)       | Instinct (Reflex Action)                                        | Conf | Origin (Why?)     |
+| :------------------------ | :-------------------------------------------------------------- | :--- | :---------------- |
+| **User says "Simpler!"**  | **Delete code.** Do not rewrite. Remove abstraction layers.     | 0.8  | Karpathy Doctrine |
+| **Looping over DB query** | **Reject.** Suggest `JOIN` or `Batch` loading immediately.      | 0.9  | Anti-Pattern: N+1 |
+| **"Deployment failed"**   | **Check ENV.** Verify environment variables first, code second. | 0.7  | Common Issue      |
+| **Writing UI Component**  | **Check Mobile.** Mobile-first CSS is the default.              | 0.8  | UX Standard       |
+
+---
+
+## 3. Anti-Patterns (The "Never Do" List)
+
+| Trigger (Temptation)             | Correction (The Discipline)                            | Impact              |
+| :------------------------------- | :----------------------------------------------------- | :------------------ |
+| **"I can assume the API..."**    | **NO.** Ask or check the docs. Hallucination is fatal. | Crash Prevention    |
+| **"I'll add this just in case"** | **NO.** YAGNI (You Ain't Gonna Need It). Delete it.    | Tech Debt Reduction |
+| **"It works on my machine"**     | **NO.** Verify in a clean environment (Container/CI).  | Deployment Safety   |
+
+---
+
+## 4. Lightning Optimization Log (Latest Updates)
+*Record new lessons here after each session using `@07_AGENT_OPTIMIZER`.*
+
+* **[2026-02-09] Instinct Added:** When modifying `GEMINI.md`, always check for `lazy loading` compatibility. (Conf: 0.9)
